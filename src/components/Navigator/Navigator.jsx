@@ -1,6 +1,7 @@
+import classes from "./Navigator.module.css"
 function Navigator() {
     return (
-        <nav className="navigator">
+        <nav className={classes.navigator}>
             <div><a>Profile</a>   </div>
             <div><a>Masages</a>  </div>
             <div><a>News</a>  </div>

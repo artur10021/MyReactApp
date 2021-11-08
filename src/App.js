@@ -1,7 +1,8 @@
 import './App.css';
-import Header from './components/Header';
-import Navigator from './components/Navigator';
-import Profile from './components/Profile';
+import Header from './components/Header/Header';
+import Navigator from './components/Navigator/Navigator';
+import Profile from './components/Profile/Profile';
+
 
 
 function App() {
