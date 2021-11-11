@@ -9,8 +9,7 @@ function MyPosts(){
              <button>Add post</button>
              <Post postMassege="Hi, how are you?" likes="15"/>
              <Post postMassege="I, hope you will enjoy my proect!" likes="20"/>
-             <Post/>
-             <Post/>
+             
 
              
         </div>
