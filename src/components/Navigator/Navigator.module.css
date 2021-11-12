@@ -1,4 +1,17 @@
 .navigator{
-    grid-area: navigator;
-    background-color: rgb(73, 99, 133);
-  }
+  grid-area: navigator;
+  background-color: rgb(73, 99, 133);
+}
+
+.navLinks{
+  padding: 8px;
+}
+.navLinks a{
+  color: aliceblue;
+  text-decoration: none;
+}
+
+.navLinks a.activeLink{
+  color:blue;
+}
+
