@@ -1,9 +1,10 @@
+import { rerenderTree } from "../render";
 
 let appState = {
     profilePage: {
         posts: [
             { id: 1, postMessage: "Hi, how are you", likes: 15 },
-            { id: 1, postMessage: "I, hope you will enjoy my proect!", likes: 20 },
+            { id: 2, postMessage: "I, hope you will enjoy my proect!", likes: 20 },
         ],
     },
 
@@ -15,7 +16,7 @@ let appState = {
             { id: 1, massegeText: "Thank you! :3" },
         ],
         contactsData: [
-            { id: 1, name: "Artur", img: "https://lh3.googleusercontent.com/proxy/lTlFBevC64Sf-NuKOZGNQYn337bAapYcJOJKqjoXV5xiYnI_9kBWMsqgswAWSel4gYcHO2OHKhKTc9kqJMcOfin9gh1hjmKRlBqYqHn4uytcJ4s"},
+            { id: 1, name: "Artur", img: "https://i.pinimg.com/originals/00/bf/e1/00bfe1b5690bdb15794ef9175c107bc8.png"},
             { id: 2, name: "Andrej", img: "https://blog.teachlr.com/wp-content/uploads/2016/06/hero-avatar.png"},
             { id: 3, name: "Max", img: "https://www.si-lab.org/img/members/avatar4.png" },
             { id: 4, name: "Viktoria", img: "https://i.pinimg.com/originals/a2/26/91/a226914001492533a363c320ba6dba4c.png" },
@@ -24,8 +25,16 @@ let appState = {
 
 
         ],
+    },
+}
+
+export let addPost = (textFromPost) =>{
+    let newPost = {
+        id: 3, postMessage: textFromPost, likes: 0,
     }
 
+    appState.profilePage.posts.push(newPost);
+    rerenderTree(appState);
 }
 
 export default appState;

@@ -35,4 +35,9 @@
     font-family:Arial, Helvetica, sans-serif;
  }
 
+ .massegeTextarea{
+    height: 80px;
+    width: 50%;
+    resize: none;
+ }
  

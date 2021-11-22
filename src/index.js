@@ -1,19 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import state from "./Redax/Redax"
+import { rerenderTree } from './render';
+import appState from './Redax/Redax'
 
-
-
-
-ReactDOM.render(
-  <React.StrictMode>
-    <App state={state} />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
+rerenderTree(appState);
 
 reportWebVitals();
