@@ -1,8 +1,25 @@
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { rerenderTree } from './render';
-import appState from './Redax/Redax'
+import appState, { subscribe } from './Redax/Redax';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import store from "./Redax/Redax";
 
-rerenderTree(appState);
+
+
+let rerenderTree = (state) => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <App state={store.getAppState()} dispatch={store.dispatch.bind(store)} />
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+  
+}
+
+rerenderTree(store.getAppState());
+store.subscribe(rerenderTree);
 
 reportWebVitals();
