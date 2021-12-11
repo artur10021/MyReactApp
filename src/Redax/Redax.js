@@ -1,6 +1,9 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
+const UPDATE_NEW_MASSEGE_BODY = 'UPDATE_NEW_MASSEGE_BODY';
+const SEND_MASSEGE = 'SEND_MASSEGE';
+
 let store = {
 
     _callSubscriber() {
@@ -18,10 +21,13 @@ let store = {
         dialoguesPage: {
             massegesData: [
                 { id: 1, massegeText: "Hi, how are you?" },
-                { id: 1, massegeText: "Your project is so nice!" },
-                { id: 1, massegeText: "Hi" },
-                { id: 1, massegeText: "Thank you! :3" },
+                { id: 2, massegeText: "Your project is so nice!" },
+                { id: 3, massegeText: "Hi" },
+                { id: 4, massegeText: "Thank you! :3" },
             ],
+
+            newMassegeBody: "",
+
             contactsData: [
                 { id: 1, name: "Artur", img: "https://i.pinimg.com/originals/00/bf/e1/00bfe1b5690bdb15794ef9175c107bc8.png" },
                 { id: 2, name: "Andrej", img: "https://blog.teachlr.com/wp-content/uploads/2016/06/hero-avatar.png" },
@@ -60,6 +66,17 @@ let store = {
             this._appState.profilePage.newPostText = action.newText;
             this._callSubscriber(store.getAppState);
         }
+
+        else if (action.type === UPDATE_NEW_MASSEGE_BODY) {
+            this._appState.dialoguesPage.newMassegeBody = action.body;
+            this._callSubscriber(store._appState);
+        }
+        else if (action.type === SEND_MASSEGE) {
+            let body = this._appState.dialoguesPage.newMassegeBody;
+            this._appState.dialoguesPage.newMassegeBody = "";
+            this._appState.dialoguesPage.massegesData.push( { id: 5, massegeText: body } );
+            this._callSubscriber(this._appState);
+        }
     }
 
 
@@ -70,4 +87,10 @@ export const updateNewPostTextActionCreator = (text) => (
     { type: UPDATE_NEW_POST_TEXT, newText: text }
 )
 
+export const sendMassegeCreator = () => ({ type: SEND_MASSEGE });
+export const updateNewMassegeBodyCreator = (body) => (
+    { type: UPDATE_NEW_MASSEGE_BODY, body: body }
+)
+
 export default store;
+window.store = store;

@@ -1,4 +1,5 @@
 import React from "react"
+import { sendMassegeCreator, updateNewMassegeBodyCreator } from "../../Redax/Redax"
 import classes from "./Dialogues.module.css"
 import Contact from "./DialoguesItems/contacts"
 import Message from "./DialoguesItems/masseges"
@@ -7,15 +8,20 @@ import Message from "./DialoguesItems/masseges"
 
 function Dialogues(props) {
 
+    let state = props.store.getAppState().dialoguesPage;
 
-    let contactsItems = props.state.contactsData.map((elem) => <Contact name={elem.name} id={elem.id} imgMassegeAvatar={elem.img} />)
-    let masseges = props.state.massegesData.map((elem) => <Message id={elem.id} massegeText={elem.massegeText} />)
 
-    let newMassageElem = React.createRef();
+    let contactsItems = state.contactsData.map((elem) => <Contact name={elem.name} id={elem.id} imgMassegeAvatar={elem.img} />)
+    let masseges = state.massegesData.map((elem) => <Message id={elem.id} massegeText={elem.massegeText} />)
+    let newMessageBody = state.newMassegeBody;
 
-    let textMassage = () => {
-        let text = newMassageElem.current.value;
-        alert(text);
+    let onSendMessageClick = () => {
+        props.store.dispatch(sendMassegeCreator());
+
+    }
+    let onNewMessageChange = (e) => {
+        let body = e.target.value;
+        props.store.dispatch(updateNewMassegeBodyCreator(body));
     }
 
     return (
@@ -26,8 +32,8 @@ function Dialogues(props) {
             </div>
             <div className={classes.messages}>
                 {masseges}
-                <textarea ref={newMassageElem} className={classes.massegeTextarea}></textarea>
-                <button onClick = {textMassage} >text massage</button>
+                <textarea placeholder="Text your message" onChange={onNewMessageChange} className={classes.massegeTextarea} value={newMessageBody}></textarea>
+                <button onClick = {onSendMessageClick} >send massage</button>
             </div>
         </div>
     );
