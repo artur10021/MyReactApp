@@ -1,5 +1,5 @@
 import React from "react"
-import { sendMassegeCreator, updateNewMassegeBodyCreator } from "../../Redax/Redax"
+import { sendMassegeCreator, updateNewMassegeBodyCreator } from "../../Redax/dialogues-reduser"
 import classes from "./Dialogues.module.css"
 import Contact from "./DialoguesItems/contacts"
 import Message from "./DialoguesItems/masseges"
@@ -8,7 +8,7 @@ import Message from "./DialoguesItems/masseges"
 
 function Dialogues(props) {
 
-    let state = props.store.getAppState().dialoguesPage;
+    let state = props.store.getState().dialoguesPage;
 
 
     let contactsItems = state.contactsData.map((elem) => <Contact name={elem.name} id={elem.id} imgMassegeAvatar={elem.img} />)

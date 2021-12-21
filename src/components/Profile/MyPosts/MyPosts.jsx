@@ -1,7 +1,7 @@
 import classes from "./MyPosts.module.css"
 import Post from "./Post/Post"
 import React from "react";
-import {updateNewPostTextActionCreator, addPostActionCreator} from "./../../../Redax/Redax"
+import {updateNewPostTextActionCreator, addPostActionCreator} from "./../../../Redax/profile-reducer"
 
 
 function MyPosts(props) {
