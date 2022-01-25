@@ -23,19 +23,26 @@ let initialState = {
     ],
 };
 
-
 const dialoguesReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case UPDATE_NEW_MASSEGE_BODY:
-            state.newMassegeBody = action.body;
-            return state
+        case UPDATE_NEW_MASSEGE_BODY:{
+            return {
+                ...state,
+                newMassegeBody: action.body,
+            };
+            
+        }
 
-        case SEND_MASSEGE:
+        case SEND_MASSEGE:{
             let body = state.newMassegeBody;
-            state.newMassegeBody = "";
-            state.massegesData.push({ id: 5, massegeText: body });
-            return state;
+            return{
+                ...state,
+                newMassegeBody: "",
+                massegesData: [...state.massegesData, { id: 5, massegeText: body }],
+            };
+           
+        }
 
         default:
             return state;

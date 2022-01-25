@@ -1,5 +1,4 @@
 import React from "react"
-import { sendMassegeCreator, updateNewMassegeBodyCreator } from "../../Redax/dialogues-reduser"
 import classes from "./Dialogues.module.css"
 import Contact from "./DialoguesItems/contacts"
 import Message from "./DialoguesItems/masseges"
@@ -8,20 +7,20 @@ import Message from "./DialoguesItems/masseges"
 
 function Dialogues(props) {
 
-    let state = props.store.getState().dialoguesPage;
+    let state = props.dialoguesPage;
 
 
-    let contactsItems = state.contactsData.map((elem) => <Contact name={elem.name} id={elem.id} imgMassegeAvatar={elem.img} />)
-    let masseges = state.massegesData.map((elem) => <Message id={elem.id} massegeText={elem.massegeText} />)
+    let contactsItems = state.contactsData.map((elem) => <Contact name={elem.name} key={elem.id} id={elem.id} imgMassegeAvatar={elem.img} />)
+    let masseges = state.massegesData.map((elem) => <Message id={elem.id} key={elem.id} massegeText={elem.massegeText} />)
     let newMessageBody = state.newMassegeBody;
 
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMassegeCreator());
+        props.sendMassege();
 
     }
     let onNewMessageChange = (e) => {
         let body = e.target.value;
-        props.store.dispatch(updateNewMassegeBodyCreator(body));
+        props.updateNewMassegeBody(body);
     }
 
     return (
